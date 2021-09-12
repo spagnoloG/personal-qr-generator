@@ -92,18 +92,18 @@ app.patch("/update-user/", async(req, res) => {
     return res.status(200).json();
 })
 
-app.get("/get", async(req, res) => {
+app.post("/get", async(req, res) => {
     // check if token is valid
     try{
         const token = req.headers.authorization.split(" ")[1];
         const decoded = jwt.verify(token, "IDK");
         req.user_data = decoded;
     } catch(error) {
-        return res.status(401).json();
+        return res.status(402).json();
     }
 
     const { email } = req.body;
-
+    
     user = await db.getUser(email);
 
     return res.status(200).json(user);

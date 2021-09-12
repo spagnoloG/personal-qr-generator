@@ -17,7 +17,7 @@ const updateUser = (user, email) => {
 }
 
 const getUser = (email) => {
-    return knex("user").select("*").where("email", email)
+    return knex("user").select("*").where("email", email);
 }
 
 module.exports = {
