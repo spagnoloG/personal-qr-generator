@@ -1,5 +1,9 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
+import { BottomNav } from '../components/home/BottomNav';
+
 const axios = require('axios').default;
+
 export const Home = () => {
 
     const [user, setUser] = React.useState();
@@ -8,12 +12,16 @@ export const Home = () => {
         return localStorage.getItem('auth');
     }
 
+    const get_mail = () => {
+        return localStorage.getItem('email');
+    }
+
     const get_user_data = () => {
 
         axios.defaults.headers.common = { 'Authorization': `bearer ${get_auth()}` }
 
         axios.post('http://localhost:4200/get', {
-            email: "keka@google.ciom"
+            email: get_mail()
         })
             .then(response => {
                 console.log(response)
@@ -33,8 +41,9 @@ export const Home = () => {
 
     return (
         <div className="App">
-            <h1>Home</h1>
-            <br />
+            <Container>
+            <BottomNav></BottomNav>
+            </Container>
         </div>
     );
 }

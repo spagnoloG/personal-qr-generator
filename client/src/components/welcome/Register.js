@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 const axios = require('axios').default;
 
 export const Register = () => {
@@ -8,6 +9,7 @@ export const Register = () => {
     const [name, set_name] = React.useState("");
     const [email, set_email] = React.useState("");
     const [password, set_password] = React.useState("");
+    const [error, setError] = React.useState(false);
 
     const register = () => {
         const user_data = {
@@ -20,12 +22,11 @@ export const Register = () => {
             user_data)
             .then(response => {
                 if (response.status == 200) {
-                    // display message
-                    console.log(response)
+                    setError(false);
                 }
             })
             .catch((err) => {
-                console.log(err);
+                setError(true);
             })
     }
 
@@ -50,6 +51,9 @@ export const Register = () => {
                 <Button color="primary" type="submit">Register</Button>
             </form>
             <br />
+            {error && (
+                <Alert severity="error">Error, check your input!</Alert>
+            )}
         </div>
     )
 }

@@ -2,12 +2,16 @@ import React from 'react';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
+import Alert from '@material-ui/lab/Alert';
+
 const axios = require('axios').default;
 
 export const Login = () => {
 
     const [email, set_email] = React.useState("");
     const [password, set_password] = React.useState("");
+    const [error, setError] = React.useState(false);
+
     const history = useHistory();
 
     const login = () => {
@@ -16,19 +20,21 @@ export const Login = () => {
             password: password
         }
 
-        console.log(user_data)
         axios.post('http://localhost:4200/login',
             user_data)
             .then(response => {
-                console.log(response)
                 if (response.status == 200) {
                     // redirect
+                    setError(false);
                     localStorage.setItem('auth', response.data.token);
+                    localStorage.setItem('email', response.data.user.email);
                     history.push("/home");
+                } else {
+                    setError(true);
                 }
             })
             .catch((err) => {
-                console.log(err);
+                setError(true);
             })
     }
 
@@ -50,6 +56,9 @@ export const Login = () => {
                 <Button color="primary" type="submit">Login</Button>
             </form>
             <br />
+            {error && (
+                <Alert severity="error">Error, check your input!</Alert>
+            )}
         </div>
     )
 }

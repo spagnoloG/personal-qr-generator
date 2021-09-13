@@ -4,11 +4,11 @@ import {Home} from './pages/Home';
 
 export const routes = [
   {
-      path: '/welcome',
-      component: Welcome
-  },
-  {
       path: '/home',
       component: Home
-  }
+  },
+  {
+    path: '/',
+    component: Welcome
+},
 ]

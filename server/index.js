@@ -49,6 +49,9 @@ app.post("/login", async(req, res) => {
 
     const user = await db.getUser(email);
 
+    if(user[0] == undefined)
+        return res.status(500).json();
+
     bcrypt.compare(password, user[0].password, (err, result) =>{
         if(err) return res.status(500).json();
 
