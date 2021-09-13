@@ -10,6 +10,7 @@ export const Register = () => {
     const [email, set_email] = React.useState("");
     const [password, set_password] = React.useState("");
     const [error, setError] = React.useState(false);
+    const [success, setSucces] = React.useState(false);
 
     const register = () => {
         const user_data = {
@@ -22,6 +23,7 @@ export const Register = () => {
             user_data)
             .then(response => {
                 if (response.status == 200) {
+                    setSucces(true);
                     setError(false);
                 }
             })
@@ -53,6 +55,9 @@ export const Register = () => {
             <br />
             {error && (
                 <Alert severity="error">Error, check your input!</Alert>
+            )}
+            {success && (
+                <Alert severity="success">Success, now login:)</Alert>
             )}
         </div>
     )
