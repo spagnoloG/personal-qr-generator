@@ -41,6 +41,7 @@ app.post("/register", async(req, res) => {
 
 // --> user login --> return JWT
 app.post("/login", async(req, res) => {
+    
     const {email, password} = req.body;
 
     if(email == undefined || password == undefined)

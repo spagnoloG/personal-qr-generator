@@ -10,20 +10,20 @@ export const Home = () => {
 
     const get_user_data = () => {
 
-        axios.defaults.headers.common = {'Authorization': `bearer ${get_auth()}`}
-    
-        axios.post('http://localhost:4200/get',{
+        axios.defaults.headers.common = { 'Authorization': `bearer ${get_auth()}` }
+
+        axios.post('http://localhost:4200/get', {
             email: "keka@google.ciom"
         })
-        .then(response => {
-            console.log(response)
-            if(response.status == 200) {
-                setUser(response.data[0]);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then(response => {
+                console.log(response)
+                if (response.status == 200) {
+                    setUser(response.data[0]);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
 
@@ -33,8 +33,8 @@ export const Home = () => {
 
     return (
         <div className="App">
-          <h1>Home</h1>
-          <br />
+            <h1>Home</h1>
+            <br />
         </div>
     );
 }
