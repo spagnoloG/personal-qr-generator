@@ -39,6 +39,6 @@
 
 .bottom {
   position: absolute;
-  bottom: 10px;
-  width: 80%;
+  bottom: 5px;
+  min-width: 100%;
 }

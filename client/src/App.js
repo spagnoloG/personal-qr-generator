@@ -7,19 +7,10 @@ import React from 'react';
 
 import {routes} from './router';
 
-import { useHistory } from "react-router-dom";
 
 const App = () => {
-
-  const [auth, setAuth] = React.useState();
-
-  const history = useHistory();
-
-  React.useEffect(() => {
-  }, [])
-
   return (
-    <div className="App">
+    <div>
       <Router>
       <Switch>
         {routes.map((route, i) => (

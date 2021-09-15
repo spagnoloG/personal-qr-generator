@@ -40,10 +40,10 @@ export const Home = () => {
     }, [])
 
     return (
-        <div className="App">
+        <div>
             <Container>
-            <BottomNav></BottomNav>
             </Container>
+            <BottomNav></BottomNav>
         </div>
     );
 }
