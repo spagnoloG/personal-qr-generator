@@ -1,3 +1,7 @@
 export const Add = () => {
-    return(<></>);
+    return (
+        <div>
+            <h1>Generate a new qr code</h1>
+        </div>
+    );
 }

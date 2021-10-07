@@ -1,3 +1,9 @@
 export const Profile = () => {
-    return(<></>);
+    return(
+        <div>
+            <h1>
+                edit profile
+            </h1>
+        </div>
+    );
 }
