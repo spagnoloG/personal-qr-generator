@@ -2,7 +2,7 @@ export const Profile = () => {
     return(
         <div>
             <h1>
-                edit profile
+                Edit profile
             </h1>
         </div>
     );

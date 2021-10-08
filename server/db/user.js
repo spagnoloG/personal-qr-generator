@@ -9,7 +9,7 @@ const getAllUsers = () => {
 }
 
 const deleteUser = (id) => {
-    return knex("user").del();
+    return knex("user").where("id", id).del();
 }
 
 const updateUser = (user, email) => {
