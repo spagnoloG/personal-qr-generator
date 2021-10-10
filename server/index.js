@@ -124,15 +124,17 @@ app.post("/new-url", async (req, res) => {
         return res.status(402).json();
     }
 
-    const {id, permament_url, redirect_url } = req.body;
+    const {id, permament_url, redirect_url, title } = req.body;
 
-    if (id == undefined || permament_url == undefined || redirect_url == undefined)
+    if (id == undefined || permament_url == undefined 
+        || redirect_url == undefined || title == undefined)
         return res.status(500).json();
 
     const packet = {
         id: id,
         permament_url: permament_url,
-        redirect_url: redirect_url
+        redirect_url: redirect_url,
+        title: title
     }
 
     let transaction = await url_db.insertNewUrl(packet);

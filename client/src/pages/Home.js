@@ -10,14 +10,14 @@ import PersonIcon from '@material-ui/icons/Person';
 import { useHistory } from "react-router-dom";
 import { Add } from './Add';
 import { Profile } from './Profile';
+import { Header } from '../components/home/Header';
 
 const axios = require('axios').default;
 
 export const Home = () => {
-
-    const [page, setPage] = React.useState('list');
     const [value, setValue] = React.useState(0);
     const [user, setUser] = React.useState();
+    const history = useHistory();
 
     const get_auth = () => {
         return localStorage.getItem('auth');
@@ -42,9 +42,9 @@ export const Home = () => {
             })
             .catch((err) => {
                 console.log(err);
+                history.push("/")
             })
     }
-
 
     React.useEffect(() => {
         get_user_data()
@@ -52,36 +52,26 @@ export const Home = () => {
 
     return (
         <div>
+            <Header user={user}> </Header>
             {
                 value == 0 &&
-                <List></List>
+                <List user={user}></List>
             }
 
             {
                 value == 1 &&
-                <Add></Add>
+                <Add user={user}></Add>
             }
 
             {
                 value == 2 &&
-                <Profile></Profile>
+                <Profile user={user}></Profile>
             }
 
             <div className="bottombar">
                 <BottomNavigation
                     value={value}
                     onChange={(event, newValue) => {
-                        switch (newValue) {
-                            case 0:
-                                console.log("list");
-                                break;
-                            case 1:
-                                console.log("new");
-                                break;
-                            case 2:
-                                console.log("profile");
-                                break;
-                        }
                         setValue(newValue);
                     }}
                     className="bottom"

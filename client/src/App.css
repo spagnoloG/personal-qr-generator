@@ -42,3 +42,7 @@
   bottom: 5px;
   min-width: 100%;
 }
+
+.to-right {
+  padding-right: 70%;
+}
